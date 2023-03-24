@@ -1,0 +1,19 @@
+.Card{
+    margin-top: 100px;
+    width: 26vw;
+    height: 50vh;
+    background-color: azure;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.bod{
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    min-height: calc(100vh - 150px);
+    background-color: #1f1f1f;
+}

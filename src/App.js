@@ -1,23 +1,33 @@
-import logo from './logo.svg';
+import React, { useState } from "react";
 import './App.css';
+import Header from './Components/Header';
+import Splash from './Components/Splash';
+import Login from './Components/Login';
+import SignUp from "./Components/SignUp";
 
 function App() {
+
+  let [pageDisplayed, setPageDisplayed] = useState('splash')
+
+  let [accounts, setAccounts] = useState([])
+
+  const createAccountHandler = (accountObj) => {
+
+    setAccounts([...accounts, accountObj]);
+  };
+
+  const setPageHandler = (page) => {
+    setPageDisplayed(page)
+  };
+
+  console.log(accounts)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header setPageHandler={setPageHandler}/>
+      {pageDisplayed === "splash" && <Splash/>}
+      {pageDisplayed === "login" && <Login/>}
+      {pageDisplayed === "signup" && <SignUp createAccountHandler={createAccountHandler} accountArray={accounts} setPageHandler={setPageHandler}/>}
+        
     </div>
   );
 }
